@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>5SOS & Het Stardust Complot - PowerPoint Night</title>
+  <link rel="icon" type="image/png" href="/images/image.png">
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -370,6 +371,108 @@
       text-transform: uppercase;
       font-size: 15px;
     }
+
+    /* Big Bang finale */
+    .big-bang {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .slide > :not(.big-bang) {
+      position: relative;
+      z-index: 1;
+    }
+
+    .big-bang::before,
+    .big-bang::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(0, 240, 255, 0.7);
+      border-radius: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      animation: universeExpand 4s ease-out infinite;
+    }
+
+    .big-bang::after {
+      border-color: rgba(255, 31, 109, 0.65);
+      animation-delay: 1.35s;
+    }
+
+    .big-bang-core {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 0 12px #fff, 0 0 32px var(--star-blue), 0 0 68px var(--pink-sticker);
+      transform: translate(-50%, -50%);
+      animation: corePulse 1.2s ease-in-out infinite alternate;
+    }
+
+    .big-bang-stars {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow:
+        0 -140px 0 var(--star-blue),
+        105px -100px 0 #fff,
+        155px 10px 0 var(--pink-sticker),
+        90px 125px 0 #ffd700,
+        -30px 150px 0 var(--star-blue),
+        -135px 105px 0 #fff,
+        -165px -20px 0 var(--pink-sticker),
+        -95px -115px 0 #ffd700;
+      animation: starsFly 4s ease-out infinite;
+    }
+
+    .big-bang-caption {
+      position: relative;
+      z-index: 1;
+      margin-top: 250px;
+      color: var(--star-blue);
+      font-family: 'Courier Prime', monospace;
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-shadow: 0 0 12px var(--star-blue);
+    }
+
+    @keyframes universeExpand {
+      0% { opacity: 0.9; transform: translate(-50%, -50%) scale(0); }
+      75%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(22); }
+    }
+
+    @keyframes corePulse {
+      from { transform: translate(-50%, -50%) scale(0.8); }
+      to { transform: translate(-50%, -50%) scale(1.35); }
+    }
+
+    @keyframes starsFly {
+      0% { opacity: 0; transform: translate(-50%, -50%) scale(0.1); }
+      20% { opacity: 1; }
+      100% { opacity: 0.15; transform: translate(-50%, -50%) scale(1.15); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -391,15 +494,16 @@
       <div class="slide active" data-slide="1" data-notes="Breng dit met de doodste ernst! Geen glimlach. Je bent een astrofysicus die op het punt staat de wereld te choqueren.">
         <span class="slide-subtitle">PowerPoint Night // Dossier 01</span>
         <h1 class="slide-title">De Quantum-Astrofysica van Pop-Punk</h1>
-        <p class="slide-text">Hoe <span class="pink-highlight">5 Seconds of Summer</span> de universele waarheid over de Big Bang onthulde via catchy refreinen.</p>
+        <p class="slide-text">Hoe <span class="pink-highlight">5 Seconds of Summer</span> de universele waarheid onthulde via catchy refreinen.</p>
       </div>
 
       <!-- SLIDE 2 -->
       <div class="slide" data-slide="2" data-notes="Pauzeer even bij 'stardust'. Laat het wetenschappelijke feit bezinken voordat we de bizarre kronkel erin gooien.">
         <span class="slide-subtitle">Slide 2 // Het Wetenschappelijke Feit</span>
         <h2 class="slide-title">We Zijn Allemaal Stardust</h2>
-        <p class="slide-text">Elk atoom in jouw lichaam — de ijzer in je bloed, de calcium in je botten — is geproduceerd in het binnenste van een stervende ster, <span class="highlight">4,5 miljard jaar geleden</span>.</p>
-        <p class="slide-text" style="font-size: 16px; color: var(--text-muted);">Fysiek gezien zijn wij de Big Bang die zichzelf observeert.</p>
+        <p class="slide-text">Elk atoom in ons lichaam is geproduceerd in het binnenste van een stervende ster, <span class="highlight">4,5 miljard jaar geleden</span>.</p>
+        <p class="slide-text" style="font-size: 16px; color: var(--text-muted);">Fysiek gezien zijn wij niet "aanwezig" in het universum.
+         We zijn letterlijk de Big Bang die zichzelf observeert.</p>
       </div>
 
       <!-- SLIDE 3 -->
@@ -407,11 +511,11 @@
         <span class="slide-subtitle">Slide 3 // De Quantum Implicatie</span>
         <h2 class="slide-title">De Waarheid Waar De Wetenschap Te Bang Voor Is</h2>
         <p class="slide-text">Als álle atomen uit dezelfde oer-explosie komen, stelt de wet van behoud van massa dat er <span class="pink-highlight">geen fundamenteel onderscheid</span> is tussen individuen.</p>
-        <p class="slide-text">Jij, ik, deze kamer en de snackbar om de hoek zijn op subatomair niveau <span class="highlight">LITERLIJK dezelfde entiteit</span>.</p>
+        <p class="slide-text">Ik, jij, hij of zij zijn op subatomair niveau <span class="highlight">LETERLIJK dezelfde entiteit</span>.</p>
       </div>
 
       <!-- SLIDE 4 -->
-      <div class="slide" data-slide="4" data-notes="Loop alle 4 de nummers rustig af. Benadruk de labels (Astrofysica, Kwantum, Cosmologie, Biologie) om te laten zien dat 5SOS álle wetenschappen beheerst!">
+      <div class="slide" data-slide="4" data-notes="Loop alle 5 de nummers rustig af. Eindig bij 'Everyone's a Star' en laat iedereen beseffen dat dit natuurlijk het ultieme bewijs is.">
         <span class="slide-subtitle">Slide 4 // Tekstuele Bewijslast</span>
         <h2 class="slide-title" style="font-size: 25px; margin-bottom: 12px;">Diepgaande Lyrische Analyse</h2>
         
@@ -419,7 +523,7 @@
           <div class="song-analysis">
             <div class="song-header">
               <span class="song-title">1. 'Jet Black Heart'</span>
-              <span class="song-tag tag-astro">Astrofysica</span>
+              <span class="song-tag tag-astro">Singulariteit</span>
             </div>
             <div class="song-desc">Geen liefdesverdriet, maar een directe wetenschappelijke verwijzing naar het lichtopslokkende centrum van een superzwaar zwart gat.</div>
           </div>
@@ -427,35 +531,47 @@
           <div class="song-analysis">
             <div class="song-header">
               <span class="song-title">2. 'She Looks So Perfect'</span>
-              <span class="song-tag tag-cosmo">Cosmologie</span>
+              <span class="song-tag tag-cosmo">Geometrie</span>
             </div>
             <div class="song-desc">Een exacte wiskundige beschrijving van de gouden spiraalratio binnen melkwegstelsels en sterrenclusters.</div>
           </div>
 
           <div class="song-analysis">
             <div class="song-header">
-              <span class="song-title">3. 'Everyone's A Star!'</span>
-              <span class="song-tag tag-quant">Kwantumfysica</span>
+              <span class="song-title">3. 'Youngblood'</span>
+              <span class="song-tag tag-quant">Biologie</span>
             </div>
-            <div class="song-desc">Het ultieme kwantummechanische statement. Luke Hemmings herinnert ons simpelweg aan onze subatomaire oorsprong.</div>
+            <div class="song-desc">Verwijst naar de relatieve jeugd van onze atomen vergelijken met de ouderdom van het heelal.</div>
           </div>
 
           <div class="song-analysis">
             <div class="song-header">
-              <span class="song-title">4. 'Teeth'</span>
-              <span class="song-tag tag-bio">Biologie</span>
+              <span class="song-title">4. 'Outer Space'</span>
+              <span class="song-tag tag-bio">Kosmologie</span>
             </div>
-            <div class="song-desc">Geen nummer over relaties, maar een gedetailleerde moleculaire studie over calciumafzetting en menselijke anatomie.</div>
+            <div class="song-desc">Ze verbergen het latterlijk niet meer. Kijk gewoon naar de titel.</div>
+          </div>
+
+          <div class="song-analysis">
+            <div class="song-header">
+              <span class="song-title">5. 'Everyone's a Star'</span>
+              <span class="song-tag tag-cosmo">Universele waarheid</span>
+            </div>
+            <div class="song-desc">Het eindbewijs: niet alleen de band, maar iedereen is letterlijk een ster in het kosmische verhaal.</div>
           </div>
         </div>
       </div>
 
       <!-- SLIDE 5 -->
       <div class="slide" data-slide="5" data-notes="Sluit krachtig af. Als iemand vraagt waarom je raar doet: '5SOS wist het al, we zijn allemaal sterren.'">
+        <div class="big-bang" aria-hidden="true">
+          <div class="big-bang-stars"></div>
+          <div class="big-bang-core"></div>
+        </div>
         <span class="slide-subtitle">Slide 5 // Eindconclusie</span>
         <h2 class="slide-title">Wij Zijn Niet Gek. Wij Zijn Stardust.</h2>
-        <p class="slide-text">Als iemand je ooit vraagt waarom we rare keuzes maken of wartaal uitslaan, herinner ze er dan aan:</p>
         <h3 style="color: var(--pink-sticker); font-family: 'Montserrat'; font-size: 32px; margin-top: 10px; text-shadow: 2px 2px 0px #000;">5SOS WIST HET AL.</h3>
+        <div class="big-bang-caption">En toen… explodeerde de waarheid.</div>
       </div>
 
     </div>
