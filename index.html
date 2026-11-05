@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5SOS & Het Stardust Complot - PowerPoint Night</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;700;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #07080c;
+      --card-bg: #12131c;
+      --pink-sticker: #ff1f6d;
+      --star-blue: #00f0ff;
+      --text-main: #ffffff;
+      --text-muted: #a0a4b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Space Grotesk', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Cosmic Grid Background */
+    .bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        radial-gradient(circle at 50% 50%, rgba(255, 31, 109, 0.08) 0%, transparent 70%),
+        radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 0);
+      background-size: 100% 100%, 28px 28px;
+      z-index: 1;
+    }
+
+    /* Animated Vinyl / Speaker Elements */
+    .vinyl-container {
+      position: absolute;
+      z-index: 2;
+      pointer-events: none;
+      opacity: 0.85;
+    }
+
+    .vinyl-pink {
+      top: -100px;
+      right: -100px;
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ff1f6d 0%, #ff1f6d 26%, #111 27%, #1a1a1a 35%, #111 36%, #222 45%, #111 46%, #ff1f6d 47%, #ff1f6d 50%, #000 51%);
+      animation: spin 20s linear infinite, bassPulsePink 0.6s ease-in-out infinite alternate;
+    }
+
+    .vinyl-blue {
+      bottom: -120px;
+      left: -120px;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #00f0ff 0%, #00f0ff 26%, #111 27%, #1a1a1a 35%, #111 36%, #222 45%, #111 46%, #00f0ff 47%, #00f0ff 50%, #000 51%);
+      animation: spin 25s linear infinite reverse, bassPulseBlue 0.6s ease-in-out 0.3s infinite alternate;
+    }
+
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Bass Bounce & Speaker Vibration Animation */
+    @keyframes bassPulsePink {
+      0% {
+        transform: scale(1) rotate(0deg);
+        filter: drop-shadow(0 0 15px rgba(255, 31, 109, 0.4));
+      }
+      100% {
+        transform: scale(1.08) rotate(5deg);
+        filter: drop-shadow(0 0 35px rgba(255, 31, 109, 0.9));
+      }
+    }
+
+    @keyframes bassPulseBlue {
+      0% {
+        transform: scale(1) rotate(0deg);
+        filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.4));
+      }
+      100% {
+        transform: scale(1.09) rotate(-5deg);
+        filter: drop-shadow(0 0 40px rgba(0, 240, 255, 0.9));
+      }
+    }
+
+    /* Grotere Album Viewport voor maximale leesbaarheid */
+    .album-viewport {
+      position: relative;
+      z-index: 10;
+      width: 94vw;
+      max-width: 1100px;
+      height: 85vh;
+      max-height: 720px;
+      background-color: var(--card-bg);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), inset 0 0 40px rgba(255, 31, 109, 0.15);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border: 3px solid #2a2d40;
+      border-radius: 12px;
+    }
+
+    /* Stickers & Badges */
+    .sticker-5sos {
+      position: absolute;
+      top: 20px;
+      left: 24px;
+      background: var(--pink-sticker);
+      color: #000;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 28px;
+      letter-spacing: -1px;
+      padding: 6px 24px;
+      border-radius: 50px;
+      transform: rotate(-6deg);
+      box-shadow: 4px 4px 0px #000;
+      z-index: 30;
+      border: 2px solid #000;
+    }
+
+    .badge-star {
+      position: absolute;
+      bottom: 20px;
+      right: 24px;
+      background: var(--star-blue);
+      color: #000;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 18px;
+      letter-spacing: 1px;
+      padding: 8px 18px;
+      border-radius: 6px;
+      transform: rotate(3deg);
+      box-shadow: 4px 4px 0px #000;
+      z-index: 30;
+      border: 2px solid #000;
+      text-transform: uppercase;
+    }
+
+    /* Slides Container */
+    .slides-wrapper {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      transform: scale(0.98);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 70px;
+      text-align: center;
+    }
+
+    .slide.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1);
+    }
+
+    /* Grote, krachtige typografie */
+    .slide-subtitle {
+      font-family: 'Courier Prime', monospace;
+      color: var(--star-blue);
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 12px;
+      background: rgba(0, 240, 255, 0.1);
+      border: 1px solid var(--star-blue);
+      padding: 4px 14px;
+      display: inline-block;
+      border-radius: 4px;
+    }
+
+    .slide-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 38px;
+      color: #fff;
+      text-transform: uppercase;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      text-shadow: 3px 3px 0px rgba(0,0,0,0.8);
+    }
+
+    .slide-text {
+      color: var(--text-muted);
+      font-size: 19px;
+      line-height: 1.5;
+      max-width: 800px;
+      margin-bottom: 16px;
+    }
+
+    .highlight {
+      color: var(--star-blue);
+      font-weight: 700;
+    }
+
+    .pink-highlight {
+      color: var(--pink-sticker);
+      font-weight: 700;
+    }
+
+    /* Tracklist / Case Study Box (Slide 4) */
+    .analysis-box {
+      font-family: 'Courier Prime', monospace;
+      text-align: left;
+      background: #090a0f;
+      border: 2px solid var(--pink-sticker);
+      padding: 18px 24px;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 820px;
+      color: #fff;
+      box-shadow: 6px 6px 0px rgba(255, 31, 109, 0.3);
+    }
+
+    .song-analysis {
+      margin-bottom: 10px;
+      border-bottom: 1px dotted rgba(255,255,255,0.15);
+      padding-bottom: 8px;
+    }
+
+    .song-analysis:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .song-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 3px;
+    }
+
+    .song-title {
+      color: var(--pink-sticker);
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .song-tag {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 3px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .tag-astro { background: rgba(0, 240, 255, 0.15); color: var(--star-blue); border: 1px solid var(--star-blue); }
+    .tag-quant { background: rgba(255, 31, 109, 0.15); color: var(--pink-sticker); border: 1px solid var(--pink-sticker); }
+    .tag-cosmo { background: rgba(255, 215, 0, 0.15); color: #ffd700; border: 1px solid #ffd700; }
+    .tag-bio { background: rgba(50, 205, 50, 0.15); color: #32cd32; border: 1px solid #32cd32; }
+
+    .song-desc {
+      color: var(--text-muted);
+      font-size: 13.5px;
+      line-height: 1.35;
+    }
+
+    /* Controls Bar */
+    .controls-bar {
+      position: absolute;
+      bottom: -65px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      z-index: 100;
+    }
+
+    .btn {
+      background: var(--card-bg);
+      color: #fff;
+      border: 2px solid var(--pink-sticker);
+      padding: 12px 24px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 15px;
+      cursor: pointer;
+      border-radius: 6px;
+      box-shadow: 4px 4px 0px var(--pink-sticker);
+      transition: all 0.1s ease;
+    }
+
+    .btn:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0px var(--pink-sticker);
+      background: var(--pink-sticker);
+      color: #000;
+    }
+
+    .btn:active {
+      transform: translate(1px, 1px);
+      box-shadow: 2px 2px 0px var(--pink-sticker);
+    }
+
+    .slide-counter {
+      color: #fff;
+      font-family: 'Courier Prime', monospace;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    /* Speaker Notes Drawer */
+    .notes-drawer {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      width: 400px;
+      background: #0d0e15;
+      border-top: 4px solid var(--pink-sticker);
+      border-left: 4px solid var(--pink-sticker);
+      padding: 24px;
+      color: #fff;
+      font-family: 'Courier Prime', monospace;
+      font-size: 14px;
+      line-height: 1.6;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+      z-index: 300;
+      box-shadow: 0 -15px 40px rgba(0,0,0,0.9);
+    }
+
+    .notes-drawer.open {
+      transform: translateY(0);
+    }
+
+    .notes-title {
+      color: var(--pink-sticker);
+      font-weight: 700;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      font-size: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-grid"></div>
+
+  <!-- Animated Vinyl / Speaker Elements -->
+  <div class="vinyl-container vinyl-pink"></div>
+  <div class="vinyl-container vinyl-blue"></div>
+
+  <!-- Main Album Sleeve Viewport -->
+  <div class="album-viewport">
+    <div class="sticker-5sos">5SOS</div>
+    <div class="badge-star">EVERYONE'S A STAR!</div>
+
+    <div class="slides-wrapper">
+      
+      <!-- SLIDE 1 -->
+      <div class="slide active" data-slide="1" data-notes="Breng dit met de doodste ernst! Geen glimlach. Je bent een astrofysicus die op het punt staat de wereld te choqueren.">
+        <span class="slide-subtitle">PowerPoint Night // Dossier 01</span>
+        <h1 class="slide-title">De Quantum-Astrofysica van Pop-Punk</h1>
+        <p class="slide-text">Hoe <span class="pink-highlight">5 Seconds of Summer</span> de universele waarheid over de Big Bang onthulde via catchy refreinen.</p>
+      </div>
+
+      <!-- SLIDE 2 -->
+      <div class="slide" data-slide="2" data-notes="Pauzeer even bij 'stardust'. Laat het wetenschappelijke feit bezinken voordat we de bizarre kronkel erin gooien.">
+        <span class="slide-subtitle">Slide 2 // Het Wetenschappelijke Feit</span>
+        <h2 class="slide-title">We Zijn Allemaal Stardust</h2>
+        <p class="slide-text">Elk atoom in jouw lichaam — de ijzer in je bloed, de calcium in je botten — is geproduceerd in het binnenste van een stervende ster, <span class="highlight">4,5 miljard jaar geleden</span>.</p>
+        <p class="slide-text" style="font-size: 16px; color: var(--text-muted);">Fysiek gezien zijn wij de Big Bang die zichzelf observeert.</p>
+      </div>
+
+      <!-- SLIDE 3 -->
+      <div class="slide" data-slide="3" data-notes="Sla hier de logica volledig op hol! Wijs naar een stoel of de frituurpan om het punt kracht bij te zetten.">
+        <span class="slide-subtitle">Slide 3 // De Quantum Implicatie</span>
+        <h2 class="slide-title">De Waarheid Waar De Wetenschap Te Bang Voor Is</h2>
+        <p class="slide-text">Als álle atomen uit dezelfde oer-explosie komen, stelt de wet van behoud van massa dat er <span class="pink-highlight">geen fundamenteel onderscheid</span> is tussen individuen.</p>
+        <p class="slide-text">Jij, ik, deze kamer en de snackbar om de hoek zijn op subatomair niveau <span class="highlight">LITERLIJK dezelfde entiteit</span>.</p>
+      </div>
+
+      <!-- SLIDE 4 -->
+      <div class="slide" data-slide="4" data-notes="Loop alle 4 de nummers rustig af. Benadruk de labels (Astrofysica, Kwantum, Cosmologie, Biologie) om te laten zien dat 5SOS álle wetenschappen beheerst!">
+        <span class="slide-subtitle">Slide 4 // Tekstuele Bewijslast</span>
+        <h2 class="slide-title" style="font-size: 25px; margin-bottom: 12px;">Diepgaande Lyrische Analyse</h2>
+        
+        <div class="analysis-box">
+          <div class="song-analysis">
+            <div class="song-header">
+              <span class="song-title">1. 'Jet Black Heart'</span>
+              <span class="song-tag tag-astro">Astrofysica</span>
+            </div>
+            <div class="song-desc">Geen liefdesverdriet, maar een directe wetenschappelijke verwijzing naar het lichtopslokkende centrum van een superzwaar zwart gat.</div>
+          </div>
+          
+          <div class="song-analysis">
+            <div class="song-header">
+              <span class="song-title">2. 'She Looks So Perfect'</span>
+              <span class="song-tag tag-cosmo">Cosmologie</span>
+            </div>
+            <div class="song-desc">Een exacte wiskundige beschrijving van de gouden spiraalratio binnen melkwegstelsels en sterrenclusters.</div>
+          </div>
+
+          <div class="song-analysis">
+            <div class="song-header">
+              <span class="song-title">3. 'Everyone's A Star!'</span>
+              <span class="song-tag tag-quant">Kwantumfysica</span>
+            </div>
+            <div class="song-desc">Het ultieme kwantummechanische statement. Luke Hemmings herinnert ons simpelweg aan onze subatomaire oorsprong.</div>
+          </div>
+
+          <div class="song-analysis">
+            <div class="song-header">
+              <span class="song-title">4. 'Teeth'</span>
+              <span class="song-tag tag-bio">Biologie</span>
+            </div>
+            <div class="song-desc">Geen nummer over relaties, maar een gedetailleerde moleculaire studie over calciumafzetting en menselijke anatomie.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 5 -->
+      <div class="slide" data-slide="5" data-notes="Sluit krachtig af. Als iemand vraagt waarom je raar doet: '5SOS wist het al, we zijn allemaal sterren.'">
+        <span class="slide-subtitle">Slide 5 // Eindconclusie</span>
+        <h2 class="slide-title">Wij Zijn Niet Gek. Wij Zijn Stardust.</h2>
+        <p class="slide-text">Als iemand je ooit vraagt waarom we rare keuzes maken of wartaal uitslaan, herinner ze er dan aan:</p>
+        <h3 style="color: var(--pink-sticker); font-family: 'Montserrat'; font-size: 32px; margin-top: 10px; text-shadow: 2px 2px 0px #000;">5SOS WIST HET AL.</h3>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <div class="controls-bar">
+    <button class="btn" id="prevBtn">← VORIGE</button>
+    <span class="slide-counter" id="counter">1 / 5</span>
+    <button class="btn" id="nextBtn">VOLGENDE →</button>
+    <button class="btn" id="notesBtn">🎙️ NOTES</button>
+  </div>
+
+  <!-- Speaker Notes Drawer -->
+  <div class="notes-drawer" id="notesDrawer">
+    <div class="notes-title">Spreekbeurt Notities (Geheim):</div>
+    <div id="notesContent">Breng dit met de doodste ernst! Geen glimlach. Je bent een astrofysicus die op het punt staat de wereld te choqueren.</div>
+  </div>
+
+  <script>
+    let currentSlide = 1;
+    const totalSlides = 5;
+
+    const slides = document.querySelectorAll('.slide');
+    const counter = document.getElementById('counter');
+    const notesContent = document.getElementById('notesContent');
+    const notesDrawer = document.getElementById('notesDrawer');
+
+    function updateSlide(index) {
+      slides.forEach(s => s.classList.remove('active'));
+      const activeSlide = document.querySelector(`.slide[data-slide="${index}"]`);
+      activeSlide.classList.add('active');
+      
+      counter.innerText = `${index} / ${totalSlides}`;
+      notesContent.innerText = activeSlide.getAttribute('data-notes');
+    }
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      if (currentSlide < totalSlides) {
+        currentSlide++;
+        updateSlide(currentSlide);
+      }
+    });
+
+    document.getElementById('prevBtn').addEventListener('click', () => {
+      if (currentSlide > 1) {
+        currentSlide--;
+        updateSlide(currentSlide);
+      }
+    });
+
+    document.getElementById('notesBtn').addEventListener('click', () => {
+      notesDrawer.classList.toggle('open');
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        if (currentSlide < totalSlides) {
+          currentSlide++;
+          updateSlide(currentSlide);
+        }
+      } else if (e.key === 'ArrowLeft') {
+        if (currentSlide > 1) {
+          currentSlide--;
+          updateSlide(currentSlide);
+        }
+      } else if (e.key.toLowerCase() === 'n') {
+        notesDrawer.classList.toggle('open');
+      }
+    });
+  </script>
+</body>
+</html>
