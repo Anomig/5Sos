@@ -473,6 +473,200 @@
         scroll-behavior: auto !important;
       }
     }
+
+    
+/* =====================================
+   TABLET RESPONSIVE
+   ===================================== */
+
+@media screen and (max-width: 768px) {
+
+    body {
+        overflow: auto;
+        justify-content: flex-start;
+        min-height: 100vh;
+        padding: 20px 0 100px;
+    }
+
+    .album-viewport {
+        width: 95vw;
+        height: 80vh;
+        min-height: 500px;
+    }
+
+    .slide {
+        padding: 30px 35px;
+    }
+
+    .slide-title {
+        font-size: 30px;
+    }
+
+    .slide-text {
+        font-size: 16px;
+    }
+
+    .vinyl-pink {
+        width: 250px;
+        height: 250px;
+    }
+
+    .vinyl-blue {
+        width: 280px;
+        height: 280px;
+    }
+
+    .sticker-5sos {
+        font-size: 21px;
+        padding: 5px 16px;
+    }
+
+    .badge-star {
+        font-size: 13px;
+        padding: 6px 12px;
+    }
+
+    .controls-bar {
+        position: fixed;
+        bottom: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        gap: 10px;
+        width: 95%;
+        justify-content: center;
+    }
+
+    .btn {
+        font-size: 12px;
+        padding: 10px 12px;
+    }
+
+    .notes-drawer {
+        width: 90%;
+        max-width: 400px;
+    }
+}
+
+
+/* =====================================
+   GSM RESPONSIVE
+   ===================================== */
+
+@media screen and (max-width: 480px) {
+
+    body {
+        padding-top: 15px;
+        padding-bottom: 85px;
+    }
+
+    .album-viewport {
+        width: 96vw;
+        height: 75vh;
+        min-height: 450px;
+        border-width: 2px;
+    }
+
+    .slides-wrapper {
+        padding: 10px;
+    }
+
+    .slide {
+        padding: 65px 18px 35px;
+    }
+
+    .slide-title {
+        font-size: 25px;
+        line-height: 1.2;
+        margin-bottom: 15px;
+    }
+
+    .slide-subtitle {
+        font-size: 10px;
+        letter-spacing: 1px;
+        padding: 4px 8px;
+    }
+
+    .slide-text {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .analysis-box {
+        padding: 12px;
+        font-size: 12px;
+    }
+
+    .song-title {
+        font-size: 13px;
+    }
+
+    .song-tag {
+        font-size: 9px;
+        padding: 2px 5px;
+        letter-spacing: 0;
+    }
+
+    .song-desc {
+        font-size: 11px;
+    }
+
+    .sticker-5sos {
+        top: 12px;
+        left: 12px;
+        font-size: 16px;
+        padding: 4px 12px;
+    }
+
+    .badge-star {
+        bottom: 10px;
+        right: 10px;
+        font-size: 9px;
+        padding: 5px 8px;
+    }
+
+    .vinyl-pink {
+        width: 170px;
+        height: 170px;
+        top: -60px;
+        right: -70px;
+    }
+
+    .vinyl-blue {
+        width: 190px;
+        height: 190px;
+        bottom: -70px;
+        left: -75px;
+    }
+
+    .controls-bar {
+        gap: 6px;
+        bottom: 10px;
+    }
+
+    .btn {
+        font-size: 10px;
+        padding: 10px 8px;
+        box-shadow: 2px 2px 0px var(--pink-sticker);
+    }
+
+    .slide-counter {
+        font-size: 13px;
+    }
+
+    .notes-drawer {
+        width: 100%;
+        max-width: none;
+        padding: 18px;
+        font-size: 12px;
+    }
+
+    .big-bang-caption {
+        font-size: 10px;
+        letter-spacing: 1px;
+        margin-top: 180px;
+    }
+}
+
   </style>
 </head>
 <body>
@@ -511,7 +705,7 @@
         <span class="slide-subtitle">Slide 3 // De Quantum Implicatie</span>
         <h2 class="slide-title">De Waarheid Waar De Wetenschap Te Bang Voor Is</h2>
         <p class="slide-text">Als álle atomen uit dezelfde oer-explosie komen, stelt de wet van behoud van massa dat er <span class="pink-highlight">geen fundamenteel onderscheid</span> is tussen individuen.</p>
-        <p class="slide-text">Ik, jij, hij of zij zijn op subatomair niveau <span class="highlight">LETERLIJK dezelfde entiteit</span>.</p>
+        <p class="slide-text">Ik, jij, hij of zij zijn op subatomair niveau <span class="highlight">LETTERLIJK dezelfde entiteit</span>.</p>
       </div>
 
       <!-- SLIDE 4 -->
@@ -549,7 +743,7 @@
               <span class="song-title">4. 'Outer Space'</span>
               <span class="song-tag tag-bio">Kosmologie</span>
             </div>
-            <div class="song-desc">Ze verbergen het latterlijk niet meer. Kijk gewoon naar de titel.</div>
+            <div class="song-desc">Ze verbergen het letterlijk niet meer. Kijk gewoon naar de titel.</div>
           </div>
 
           <div class="song-analysis">
